@@ -8,6 +8,18 @@
         <servlet-name>ManagerUserController</servlet-name>
         <servlet-class>Controller.ManagerUserController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderListController</servlet-name>
+        <servlet-class>Controller.OrderListController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageContactController</servlet-name>
+        <servlet-class>Controller.ManageContactController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DashBoardController</servlet-name>
+        <servlet-class>Controller.DashBoardController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProfileUserController</servlet-name>
         <url-pattern>/ProfileUserController/*</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>ManagerUserController</servlet-name>
         <url-pattern>/ManagerUserController/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderListController</servlet-name>
+        <url-pattern>/OrderListController/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageContactController</servlet-name>
+        <url-pattern>/ManageContactController/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DashBoardController</servlet-name>
+        <url-pattern>/DashBoardController/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

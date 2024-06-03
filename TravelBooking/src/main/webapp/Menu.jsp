@@ -223,16 +223,16 @@
         <div class="d-flex">
             <div class="col-md-2 bg-white p-3 border" id="menu">
                 <div class="float-end" id="menu__icon" onclick="toggleMenu()"><box-icon name='menu'></box-icon></div>
-                <div class="d-flex space"><div class="icons"><box-icon type='solid' name='dashboard'></box-icon></div> <p><a href="/ProfileUserController/DashBoard">DASHBOARD</a></p></div>
+                <div class="d-flex space"><div class="icons"><box-icon type='solid' name='dashboard'></box-icon></div> <p><a href="/DashBoardController/DashBoard">DASHBOARD</a></p></div>
                 <div class="d-flex"><div  class="icons"><box-icon type='solid' name='grid' ></box-icon></div><p><a href="#">MANAGE TOUR</a></p></div>
                 <div class="d-flex space"><div  class="icons"><box-icon name='happy-heart-eyes'></box-icon></div><p><a href="#"> FAVORITES</a></p></div>
                 <div class="d-flex"><div  class="icons"><box-icon name='messenger' type='logo' ></box-icon></div><p><a href="#"> MESSENGER</a></p></div>
-                <div class="d-flex space"><div  class="icons"><box-icon name='list-check' ></box-icon></div><p><a href="/ProfileUserController/OrderList"> ORDER LIST</a></p></div>
+                <div class="d-flex space"><div  class="icons"><box-icon name='list-check' ></box-icon></div><p><a href="/OrderListController/OrderList"> ORDER LIST</a></p></div>
                 <div class="d-flex"><div  class="icons"><box-icon name='bell-ring' type='solid' ></box-icon></div><p><a href="#"> NOTIFICATION</a></p></div>
                 <hr class="space"/>
-                <div class="d-flex"><div  class="icons"><box-icon name='user'></box-icon></div><p><a href="/ProfileUserController/ManageUser">MANAGE USER</a> </p></div>
+                <div class="d-flex"><div  class="icons"><box-icon name='user'></box-icon></div><p><a href="/ManageContactController/ManageUser">MANAGE USER</a> </p></div>
                 <div class="d-flex space"><div  class="icons"><box-icon name='user-circle' type='solid' ></box-icon></div><p> <a href="/ProfileUserController/Profile">PROFILE</a></p></div>
-                <div class="d-flex"><div  class="icons"><box-icon name='contact' type='solid' ></box-icon></div><p><a href="/ProfileUserController/ManageContact">MANAGE CONTACT</a></p></div>
+                <div class="d-flex"><div  class="icons"><box-icon name='contact' type='solid' ></box-icon></div><p><a href="/ManageContactController/ManageContact">MANAGE CONTACT</a></p></div>
             </div>
 
     </body>

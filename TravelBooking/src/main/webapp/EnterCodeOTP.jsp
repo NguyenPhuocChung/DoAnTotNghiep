@@ -101,7 +101,8 @@
                             <input class="otp" name="number4" type="number" disabled />
                         </div>
                         <button name="btn_verify" class="btn_verify mb-3">Verify OTP</button>
-                        <div class="d-flex"><p>00:00:0</p><p id="timeView"></p></div>
+                        <div class="d-flex"><p>00:00:</p><p id="timeView"></p></div>
+                        <a href="#" class="text-secondary">I did not receive code OTP </a>
                     </form>
                 </div>
             </div>
@@ -148,7 +149,7 @@
         let count = Number(document.getElementById("timeView").innerHTML);
         const timeoutId = setInterval(function () {
             document.getElementById('timeView').innerHTML = ++count;
-            if (count > 3) {
+            if (count >=15) {
                 clearTimeout(timeoutId);
             }
         }, 1000);
