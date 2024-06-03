@@ -50,7 +50,7 @@
                         </form>
                     </div>
                     <div>
-                        <button class="btn btn-sm btn-outline-danger mt-3"><a href="ShowOrderCancle.jsp">Show order cancle</a></button>
+                        <button class="btn btn-sm btn-outline-danger mt-3"><a href="/ProfileUserController/ShowOrderCancle">Show order cancle</a></button>
                     </div>
                 </div>
                 <table class="table">

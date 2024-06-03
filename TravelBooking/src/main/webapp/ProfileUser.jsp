@@ -44,11 +44,11 @@
             </div>
         </div>
         <%
-          
+
             ProfileUserModel a = (ProfileUserModel) session.getAttribute("profile");
         %>
         <div class="mt-2 d-flex container-fluid">
-            <div class="d-flex border rounded bg-light">
+            <div class="row border rounded bg-light">
                 <div class="col-4 mt-3">
                     <div class="d-flex align-content-center justify-content-center mb-3">
                         <img class="rounded-circle" src="img/<%=a.getImage()%>" alt="alt"/>
@@ -74,7 +74,7 @@
 
                     <div class="text-center">
                         <Strong>Brithday</Strong>
-                        <p><%=a.getBirthday()%></p>
+                        <p><%=a.getBirthday()%></p>s
                         <Strong>Description</Strong>
                         <p><%=a.getDescription()%></p>
                     </div>
@@ -88,7 +88,7 @@
                     <form class="row g-3">
                         <div class="col-md-6">
                             <label for="validationServer01" class="form-label">Full name</label>
-                            <input type="text" class="form-control is-valid" id="validationServer01" value="<%=a.getUserName()%>" required>
+                            <input type="text" name="userName" class="form-control is-valid" id="validationServer01" value="<%=a.getUserName()%>" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -96,19 +96,19 @@
 
                         <div class="col-md-4">
                             <label for="validationServer02" class="form-label">Date</label>
-                            <input type="date" class="form-control is-valid" id="validationServer02" value="<%=a.getBirthday()%>" required>
+                            <input type="date" name="birthday" class="form-control is-valid" id="validationServer02" value="<%=a.getBirthday()%>" required>
 
                         </div>
                         <div class="col-md-6">
                             <label for="validationServer03" class="form-label">Status</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><%=a.getDescription()%> </textarea>
+                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"><%=a.getDescription()%> </textarea>
                             <div id="validationServer03Feedback" class="invalid-feedback">
                                 Please provide a valid status .
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="validationServer01" class="form-label">Gmail</label>
-                            <input type="text" class="form-control is-valid" id="validationServer01" value="<%=a.getEmail()%>" required>
+                            <input type="text" name="email" class="form-control is-valid" id="validationServer01" value="<%=a.getEmail()%>" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -116,14 +116,14 @@
 
                         <div class="col-md-5">
                             <label for="validationServer03" class="form-label">Avatar</label>
-                            <input type="file" class="form-control" id="validationServer04" aria-describedby="validationServer04sFeedback" required>                          
+                            <input type="file" name="avatar" class="form-control" id="validationServer04" aria-describedby="validationServer04sFeedback" required>                          
                             <div id="validationServer04Feedback" class="invalid-feedback">
                                 Please select a valid avatar.
                             </div>
                         </div>
 
                         <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Save</button>
+                            <button class="btn btn-primary" name="btn_save" type="submit">Save</button>
                         </div>
                     </form>
                 </div>

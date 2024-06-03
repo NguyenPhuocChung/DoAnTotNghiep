@@ -183,6 +183,25 @@
         #changePassword{
             position: relative;
         }
+        .save{
+            position: relative;
+        }
+        #popupWrongConfirmPassword{
+            display: none;
+        }
+        #popupWrongConfirmPassword > .mt-2 > img{
+            width: 80px;
+            height: 60px;
+        }
+        
+        #poUpChangePasswordSucessfull{
+            display: none;
+        }
+        #poUpChangePasswordSucessfull>div>img{
+            width: 150px;
+            height: 100px;
+        }
+
     </style>
     <body>
         <div class="d-flex p-3">
@@ -202,8 +221,7 @@
             </div>
         </div>
         <div class="d-flex">
-
-            <div class="col-2 bg-white p-3 border" id="menu">
+            <div class="col-md-2 bg-white p-3 border" id="menu">
                 <div class="float-end" id="menu__icon" onclick="toggleMenu()"><box-icon name='menu'></box-icon></div>
                 <div class="d-flex space"><div class="icons"><box-icon type='solid' name='dashboard'></box-icon></div> <p><a href="/ProfileUserController/DashBoard">DASHBOARD</a></p></div>
                 <div class="d-flex"><div  class="icons"><box-icon type='solid' name='grid' ></box-icon></div><p><a href="#">MANAGE TOUR</a></p></div>

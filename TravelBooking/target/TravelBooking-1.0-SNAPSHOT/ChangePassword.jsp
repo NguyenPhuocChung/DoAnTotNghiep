@@ -77,12 +77,23 @@
                         </div>
                     </div>
                     <div class="float-end">
-                        <button class="btn btn-primary">Change</button>
+                        <button type="button" class="btn btn-primary" onclick="checkConfirmPassword()">Change</button>
                         <button class="btn btn-danger">Fotgot password</button>
                     </div>
                 </div>
             </div>
         </div>
     </body>
-    
+    <script>
+        function checkConfirmPassword() {
+            var inputNewPassword = document.getElementById("inputPasswordNews");
+            var inputPasswordNewConfirm = document.getElementById("inputPasswordNewConfirm");
+            var checkConfirm = inputNewPassword.localeCompare(inputPasswordNewConfirm);
+            if (checkConfirm===0) {
+                alert("password change sucessfully");
+            } else {
+                alert("Confirm password not match");
+
+            }
+    </script>
 </html>

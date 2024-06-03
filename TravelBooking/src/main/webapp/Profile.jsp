@@ -33,11 +33,29 @@
                         <div class="d-flex justify-content-center align-content-center mt-3">
                             <button class="btn btn-danger"><a class="text-white" href="/ProfileUserController/ChangePasswordAdmin">Change Password</a></button>
                         </div>
-                        <div class="text-center mt-3">
-                            <Strong>Brithday</Strong>
-                            <p><%=a.getBirthday()%></p>
-                            <Strong>Description</Strong>
-                            <p><%=a.getDescription()%></p>
+                        <div class="text-center mt-3 row">
+                            <div class="col-md-12">
+                                <Strong>Email</Strong>
+                                <p class="rounded border bg-body p-2"><%=a.getEmail()%></p>
+                            </div>
+                            <div class="col-md-6">
+                                <Strong>Phone</Strong>
+                                <p class="rounded border bg-body p-2"><%=a.getPhone()%></p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <Strong>Brithday</Strong>
+                                <p class="rounded border bg-body p-2"><%=a.getBirthday()%></p>
+                            </div>
+                            <div class="col-md-12">
+                                <Strong>Gender</Strong>
+                                <p id="gender" class="rounded border bg-body p-2"><%=a.getGender()%></p>
+                            </div>
+                            <div class="col-md-12">
+                                <Strong>Description</Strong>
+                                <p class="rounded border bg-body p-2"><%=a.getDescription()%></p>
+                            </div>
+
                         </div>
                         <div class="text-center">
                             <p class="m-0"><Strong>Day create account</strong></p>
@@ -46,31 +64,51 @@
 
                     </div>
 
-                    <div class="col-8 border bg-white p-3">
-                        <form class="row g-3">
+                    <div class="save col-8 border bg-white p-3">
+                        <form class="row g-3" id="profileForm"  onsubmit="event.preventDefault(); Warming();">
                             <div class="col-md-8">
                                 <label for="validationServer01" class="form-label">Full name</label>
-                                <input type="text" class="form-control" id="validationServer01" value="<%=a.getUserName()%>" required>
-
+                                <input type="text" name="userName" class="form-control" id="validationServer01" value="<%=a.getUserName()%>" required>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="validationServer02" class="form-label">Date</label>
-                                <input type="date" class="form-control" id="validationServer02" value="<%=a.getBirthday()%>" required>
-
+                                <input type="date" name="birthday" class="form-control" id="validationServer02" value="<%=a.getBirthday()%>" required>
                             </div>
                             <div class="col-md-5">
                                 <label for="validationServer03" class="form-label">Avatar</label>
-                                <input type="file" class="form-control" id="validationServer04" aria-describedby="validationServer04sFeedback" required>                          
+                                <input type="file" name="avatar" class="form-control" id="validationServer04" aria-describedby="validationServer04sFeedback" required>                          
                                 <div id="validationServer04Feedback" class="invalid-feedback">
                                     Please select a valid avatar.
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="validationServer01" class="form-label">Gmail</label>
-                                <input type="text" class="form-control is-valid" id="validationServer01" value="<%=a.getEmail()%>" required>
+                                <input type="text" name="email" class="form-control is-valid" id="validationServer01" value="<%=a.getEmail()%>" required>
                                 <div class="valid-feedback">
                                     Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationServer01" class="form-label">Phone</label>
+                                <input type="phone"  name="phone" class="form-control is-valid" id="validationServer01" value="<%=a.getPhone()%>" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="Male">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="Female" >
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Female
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -80,15 +118,61 @@
                                     Please provide a valid status .
                                 </div>
                             </div>
-
-
-                            <div class="col-12">
-                                <button class="btn btn-primary" type="submit">Save</button>
+                            <div class="col-12"s>
+                                <button class="btn btn-primary" type="submit" onclick="Warming()">Save</button>
                             </div>
                         </form>
+                        <div id="popup" class="popup border w-50 p-3 text-center bg-body">
+                            <div class="close" id="close" onclick="closePopup()">
+                                <box-icon type='solid' color="red" name='x-square'></box-icon>
+                            </div>
+                            <div>
+                                <img src="${pageContext.request.contextPath}/img/forgot-removebg-preview.png" alt="alt"/>
+                            </div>
+                            <div>
+                                <h2>Are You sure</h2>
+                            </div>
+                            <div class="d-flex justify-content-around">
+                                <button class="btn btn-danger" onclick="closePopup()">No</button>
+                                <button class="btn btn-primary" onclick="submitForm()">Yes</button>
+                            </div>
+                        </div>  
                     </div>
                 </div>
             </div>
         </div>
     </body>
+    <script>
+        var gender = document.getElementById("gender");
+        var male = document.getElementById("Male");
+        var female = document.getElementById("Female");
+
+        var genderValue = gender.textContent.trim();
+        if (genderValue === "1" || genderValue === 1) {
+            gender.innerHTML = "Male";
+            male.checked = "true";
+        } else {
+            gender.innerHTML = "Female";
+            female.checked = "true";
+        }
+
+        function Warming() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+            popup.style.position = "absolute";
+            popup.style.top = "10px";
+            popup.style.left = "200px";
+
+        }
+        function closePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+        function submitForm() {
+            document.getElementById("profileForm").submit();
+        }
+
+    </script>
+
+
 </html>

@@ -48,7 +48,7 @@
                             <button class="go" type="submit">Go</button>    
                         </form>
                     </div>
-                   
+
                 </div>
                 <table class="table">
                     <thead>
@@ -63,8 +63,8 @@
                             <th scope="col">Gender</th>
                             <th scope="col">Point</th>
                             <th scope="col">N_TourTaken</th>
-                            <th scope="col">Status</th>
                             <th scope="col">Date Login</th>
+                            <th scope="col">Status</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>

@@ -36,6 +36,15 @@ public class ProfileUserModel {
         this.description=description;
     }
 
+    public ProfileUserModel(String userName, String email, String image, Date birthday, String gender, String description) {
+        this.userName = userName;
+        this.email = email;
+        this.image = image;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.description = description;
+    }
+
     public String getUserName() {
         return userName;
     }

@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -69,18 +71,26 @@ public class ProfileUserController extends HttpServlet {
         } else {
             if (path.endsWith("/ProfileUserController/ChangePasswordAdmin")) {
                 request.getRequestDispatcher("/ChangePasswordAdmin.jsp").forward(request, response);
-            } else if (path.endsWith("/ProfileUserController/ManageContact")) {
-                request.getRequestDispatcher("/ManageContact.jsp").forward(request, response);
+            } else if (path.endsWith("/ProfileUserController/OTP")) {
+                request.getRequestDispatcher("/EnterCodeOTP.jsp").forward(request, response);
+            } else if (path.endsWith("/ProfileUserController/ChangePassword")) {
+                request.getRequestDispatcher("/ChangePasswordForget.jsp").forward(request, response);
             }
-            else if (path.endsWith("/ProfileUserController/ManageUser")) {
-                request.getRequestDispatcher("/ManageUser.jsp").forward(request, response);
-            }
-            else if (path.endsWith("/ProfileUserController/OrderList")) {
-                request.getRequestDispatcher("/OrderList.jsp").forward(request, response);
-            }
-            else if (path.endsWith("/ProfileUserController/DashBoard")) {
-                request.getRequestDispatcher("/DashBoard.jsp").forward(request, response);
-            }
+//            } else if (path.endsWith("/ProfileUserController/ManageContact")) {
+//                request.getRequestDispatcher("/ManageContact.jsp").forward(request, response);
+//            }
+//            else if (path.endsWith("/ProfileUserController/ManageUser")) {
+//                request.getRequestDispatcher("/ManageUser.jsp").forward(request, response);
+//            }
+//            else if (path.endsWith("/ProfileUserController/OrderList")) {
+//                request.getRequestDispatcher("/OrderList.jsp").forward(request, response);
+//            }
+//            else if (path.endsWith("/ProfileUserController/DashBoard")) {
+//                request.getRequestDispatcher("/DashBoard.jsp").forward(request, response);
+//            }
+//             else if (path.endsWith("/ProfileUserController/ShowOrderCancle")) {
+//                request.getRequestDispatcher("/ShowOrderCancle.jsp").forward(request, response);
+//            }
         }
     }
 
@@ -95,6 +105,16 @@ public class ProfileUserController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (request.getParameter("btn_save") != null) {
+            String userName = request.getParameter("userName");
+            String birthday = request.getParameter("birthday");
+            String email = request.getParameter("email");
+            String avatar = request.getParameter("avatar");
+            String description = request.getParameter("description");
+
+        } else if (request.getParameter("btn_verify") != null) {
+                response.sendRedirect("/ProfileUserController/ChangePassword");
+        }
     }
 
     /**

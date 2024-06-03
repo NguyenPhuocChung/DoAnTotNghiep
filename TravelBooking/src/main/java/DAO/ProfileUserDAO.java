@@ -51,8 +51,8 @@ public class ProfileUserDAO {
                     int point = rs.getInt("point");
                     int numberTourTaken = rs.getInt("numberTourTaken");
                     Date dateLogin = rs.getDate("dateLogin");
-                    String description =rs.getString("description");
-                    user = new ProfileUserModel(userName, email, image, phone, birthday, gender, point, numberTourTaken, dateLogin,description);
+                    String description = rs.getString("description");
+                    user = new ProfileUserModel(userName, email, image, phone, birthday, gender, point, numberTourTaken, dateLogin, description);
                 }
             }
         } catch (SQLException e) {
@@ -61,5 +61,10 @@ public class ProfileUserDAO {
 
         return user;
 
+    }
+
+    public void editProfile(ProfileUserModel profileUser) {
+        
+        
     }
 }
