@@ -9,17 +9,20 @@ import Model.ProfileUserModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
+import java.io.File;
 import java.sql.Date;
-import java.time.LocalDate;
 
 /**
  *
  * @author nguye
  */
+@MultipartConfig
 public class ProfileUserController extends HttpServlet {
 
     /**
@@ -64,7 +67,7 @@ public class ProfileUserController extends HttpServlet {
         if (path.endsWith("/ProfileUserController/Profile")) {
             ProfileUserDAO aDao = new ProfileUserDAO();
             //truyen id nguoi dung vao day
-            ProfileUserModel pro = aDao.getProfileUSer(6);
+            ProfileUserModel pro = aDao.getProfileUSer(1);
             HttpSession session = request.getSession();
             session.setAttribute("profile", pro);
             request.getRequestDispatcher("/Profile.jsp").forward(request, response);
@@ -106,15 +109,56 @@ public class ProfileUserController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("btn_save") != null) {
-            String userName = request.getParameter("userName");
-            String birthday = request.getParameter("birthday");
-            String email = request.getParameter("email");
-            String avatar = request.getParameter("avatar");
-            String description = request.getParameter("description");
+            try {
+                String userName = request.getParameter("userName");
+                Date birthday = Date.valueOf(request.getParameter("birthday"));
+                String phone = request.getParameter("phone");
+                String email = request.getParameter("email");
+                int gender = Integer.parseInt(request.getParameter("gender"));
+                String avatar = request.getParameter("avatar");
+                Part filePart = request.getPart("avatar");
+                if (filePart != null) {
+                    String fileName = getFileName(filePart);
+                    if (fileName != null && !fileName.isEmpty()) {
+                        // Định nghĩa thư mục bạn muốn lưu ảnh được tải lên
+                        String uploadDirectory = getServletContext().getRealPath("/img");
+                        String uploadPath = uploadDirectory + File.separator + fileName;
+
+                        // Lưu file vào thư mục đã chỉ định
+                        filePart.write(uploadPath);
+
+                        // Thiết lập tên ảnh (đường dẫn tương đối) trong cơ sở dữ liệu
+                        avatar = fileName;
+                    }
+                }
+                String description = request.getParameter("description");
+                String address = request.getParameter("address");
+                ProfileUserModel pro = new ProfileUserModel(userName, email, phone, avatar, birthday, gender, address, description);
+                ProfileUserDAO pDao = new ProfileUserDAO();
+                ProfileUserModel pm = pDao.updateProfile(pro, 1);
+
+                if (pm == null) {
+                    response.sendRedirect("/ProfileUserController/Profile");
+                } else {
+                    response.sendRedirect("/ProfileUserController/Profile");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response.sendRedirect("/ProfileUserController/Profile");
+            }
 
         } else if (request.getParameter("btn_verify") != null) {
-                response.sendRedirect("/ProfileUserController/ChangePassword");
+            response.sendRedirect("/ProfileUserController/ChangePassword");
         }
+    }
+
+    private String getFileName(Part part) {
+        for (String content : part.getHeader("content-disposition").split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return null;
     }
 
     /**

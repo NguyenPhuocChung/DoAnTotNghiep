@@ -13,17 +13,17 @@
     </head>
     <body>
         <%@include file="Menu.jsp" %>
-  <div class="col-10 bg-light dashboard border" id="list">
+        <div class="col-10 bg-light dashboard border" id="list">
             <div id="menu_icon" onclick="toggleMenu()"><box-icon name='menu'></box-icon></div>
             <div class="mb-3 p-3 ">
                 <h3 class="mb-3">
                     Manage Contact
                 </h3>
-                <form class="row g-3 needs-validation" novalidate>
+                <form class="row g-3 needs-validation" novalidate action="ManageContactController" method="post">
                     <div class="col-md-7">
                         <label for="validationCustomUsername" class="form-label">Address</label>
                         <div class="input-group has-validation">
-                            <input type="text" value="600 Nguyen Van Cu Extension, An Binh, Ninh Kieu, Can Tho 900000"class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                            <input type="text" value=""class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                             <div class="invalid-feedback">
                                 Please choose a Address.
                             </div>
@@ -33,7 +33,7 @@
                     <div class="col-md-2">
                         <label for="validationCustomUsername" class="form-label">Hotline</label>
                         <div class="input-group has-validation">                          
-                            <input type="tel" value="0987654321" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                            <input type="tel" name="" value="" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                             <div class="invalid-feedback">
                                 Please choose a Hotline.
                             </div>
@@ -43,7 +43,7 @@
                     <div class="col-md-3">
                         <label for="validationCustomUsername" class="form-label">Email</label>
                         <div class="input-group has-validation">
-                            <input type="email" value="Chungnp@gmail.com" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                            <input name="email" type="email" value="" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                             <div class="invalid-feedback">
                                 Please choose a Email.
                             </div>
@@ -51,7 +51,7 @@
                     </div>      
 
                     <div class="col-12">
-                        <button class="btn btn-danger" type="submit">Save</button>
+                        <button class="btn btn-danger" name="btn_save" type="submit">Save</button>
                     </div>
                 </form>
             </div>

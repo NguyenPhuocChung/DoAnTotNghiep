@@ -4,7 +4,7 @@
  */
 package Model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -17,13 +17,14 @@ public class ProfileUserModel {
     private String image;
     private String phone;
     private Date birthday;
-    private String gender;
+    private int gender;
     private int point;
     private int numberTourTaken;
     private Date dateLogin;
     private String description;
+    private String address;
 
-    public ProfileUserModel(String userName, String email, String image, String phone, Date birthday, String gender, int point, int numberTourTaken, Date dateLogin,String description) {
+    public ProfileUserModel(String userName, String email, String image, String phone, Date birthday, int gender, int point, int numberTourTaken, Date dateLogin, String address, String description) {
         this.userName = userName;
         this.email = email;
         this.image = image;
@@ -33,16 +34,25 @@ public class ProfileUserModel {
         this.point = point;
         this.numberTourTaken = numberTourTaken;
         this.dateLogin = dateLogin;
-        this.description=description;
+        this.address = address;
+        this.description = description;
     }
 
-    public ProfileUserModel(String userName, String email, String image, Date birthday, String gender, String description) {
+    public ProfileUserModel(String userName, String email, String phone, String image, Date birthday, int gender, String address, String description) {
         this.userName = userName;
         this.email = email;
+        this.phone = phone;
         this.image = image;
         this.birthday = birthday;
         this.gender = gender;
+        this.address = address;
         this.description = description;
+    }
+
+    public ProfileUserModel(String email, String phone, String address) {
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
     }
 
     public String getUserName() {
@@ -85,11 +95,11 @@ public class ProfileUserModel {
         this.birthday = birthday;
     }
 
-    public String getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -123,6 +133,14 @@ public class ProfileUserModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }

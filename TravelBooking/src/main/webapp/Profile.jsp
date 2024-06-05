@@ -52,6 +52,10 @@
                                 <p id="gender" class="rounded border bg-body p-2"><%=a.getGender()%></p>
                             </div>
                             <div class="col-md-12">
+                                <Strong>Address</Strong>
+                                <p class="rounded border bg-body p-2"><%=a.getAddress()%></p>
+                            </div>
+                            <div class="col-md-12">
                                 <Strong>Description</Strong>
                                 <p class="rounded border bg-body p-2"><%=a.getDescription()%></p>
                             </div>
@@ -65,7 +69,7 @@
                     </div>
 
                     <div class="save col-8 border bg-white p-3">
-                        <form class="row g-3" id="profileForm"  onsubmit="event.preventDefault(); Warming();">
+                        <form class="row g-3" id="profileForm" action="ProfileUserController" method="post" enctype="multipart/form-data"  onsubmit="event.preventDefault(); Warming();">
                             <div class="col-md-8">
                                 <label for="validationServer01" class="form-label">Full name</label>
                                 <input type="text" name="userName" class="form-control" id="validationServer01" value="<%=a.getUserName()%>" required>
@@ -77,7 +81,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="validationServer03" class="form-label">Avatar</label>
-                                <input type="file" name="avatar" class="form-control" id="validationServer04" aria-describedby="validationServer04sFeedback" required>                          
+                                <input type="file" name="avatar" value="<%=a.getImage()%>" class="form-control" id="validationServer04" aria-describedby="validationServer04sFeedback" required>                          
                                 <div id="validationServer04Feedback" class="invalid-feedback">
                                     Please select a valid avatar.
                                 </div>
@@ -99,27 +103,35 @@
                             <div class="col-md-6">
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="Male">
+                                    <input class="form-check-input" type="radio" name="gender" id="Male" value="1">
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Male
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="Female" >
+                                    <input class="form-check-input" type="radio" name="gender" id="Female" value="0" >
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         Female
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-12">
+                                <label for="validationServer01" class="form-label">Address</label>
+                                <input type="text" name="address" class="form-control is-valid" id="validationServer01" value="<%=a.getAddress()%>" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-12">
                                 <label for="validationServer03" class="form-label">Status</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><%=a.getDescription()%></textarea>
+                                <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"><%=a.getDescription()%></textarea>
                                 <div id="validationServer03Feedback" class="invalid-feedback">
                                     Please provide a valid status .
                                 </div>
                             </div>
-                            <div class="col-12"s>
-                                <button class="btn btn-primary" type="submit" onclick="Warming()">Save</button>
+                            <input style="display: none" type="text" name="btn_save" value="">
+                            <div class="col-12">
+                                <button name="btn_save" class="btn btn-primary" type="submit" onclick="Warming()">Save</button>
                             </div>
                         </form>
                         <div id="popup" class="popup border w-50 p-3 text-center bg-body">
